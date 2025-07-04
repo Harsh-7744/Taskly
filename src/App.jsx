@@ -7,6 +7,7 @@ function App() {
   const [newTaskText, setNewTaskText] = useState("");
   const [newTaskPriority, setNewTaskPriority] = useState("Medium");
   const [newTaskDeadline, setNewTaskDeadline] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [showCompleted, setShowCompleted] = useState(true);
 
@@ -60,9 +61,11 @@ function App() {
     setNewTaskText("");
     setNewTaskDeadline("");
     setNewTaskPriority("Medium");
+    setIsEditing(false)
   };
 
   const handleEditTask = (e, id) => {
+    setIsEditing(true)
     const taskToEdit = tasks.find((task) => task.id === id);
     setNewTaskText(taskToEdit.todo);
     setNewTaskPriority(taskToEdit.priority || "Medium");
@@ -122,6 +125,7 @@ function App() {
         handleEditTask={handleEditTask}
         handleDeleteTask={handleDeleteTask}
         handleTaskCheckboxToggle={handleTaskCheckboxToggle}
+        isEditing={isEditing}
       />
     </div>
   );

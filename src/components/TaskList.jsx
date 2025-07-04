@@ -7,6 +7,7 @@ const TaskList = ({
   handleEditTask,
   handleDeleteTask,
   handleTaskCheckboxToggle,
+  isEditing
 }) => {
   return (
     <>
@@ -22,6 +23,7 @@ const TaskList = ({
                 handleEditTask={handleEditTask}
                 handleDeleteTask={handleDeleteTask}
                 handleTaskCheckboxToggle={handleTaskCheckboxToggle}
+                isEditing={isEditing}
               />
             )
         )}

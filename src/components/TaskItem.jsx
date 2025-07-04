@@ -7,6 +7,7 @@ const TaskItem = ({
   handleEditTask,
   handleDeleteTask,
   handleTaskCheckboxToggle,
+  isEditing,
 }) => {
   return (
     <div className="todo flex my-3 justify-between items-start">
@@ -42,9 +43,7 @@ const TaskItem = ({
             </span>
             <br />
             Deadline:{" "}
-            {task.deadline
-              ? new Date(task.deadline).toLocaleString()
-              : "N/A"}
+            {task.deadline ? new Date(task.deadline).toLocaleString() : "N/A"}
           </div>
         </div>
       </div>
@@ -52,7 +51,9 @@ const TaskItem = ({
       <div className="buttons flex ml-2 mt-1">
         <button
           onClick={(e) => handleEditTask(e, task.id)}
-          className="bg-violet-800 hover:bg-violet-950 p-2 py-1 text-sm font-bold text-white rounded-md mx-1"
+          className={`${
+            isEditing ? "bg-gray-400" : "bg-violet-800 hover:bg-violet-950" } p-2 py-1 text-sm font-bold text-white rounded-md mx-1`}
+          disabled={isEditing}
         >
           <FaEdit />
         </button>
